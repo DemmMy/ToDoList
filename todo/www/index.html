@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app="TodoApp">
+
+<head>
+  <meta charset="utf-8">
+  <title>DemoAPI</title>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-cookies.js"></script>
+  <script src="js/main.js"></script>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
+    type='text/css'>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css" media="all" />
+
+</head>
+
+<body ng-controller="MainController">
+  <div>
+    <button id="deco" ng-click="deconnexion()" class="btn btn-danger btn-sm">Déconnexion</button>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="todolist not-done">
+          <form>
+            <input type="text" class="form-control add-todo" placeholder="Add todo" ng-model="list.text">
+            <button id="checkAll" type="submit" ng-click="createList()" class="btn btn-success">Ajouter
+              Liste</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="bloc">
+    <div class="row">
+      <div class="col-md-4" ng-repeat="tache in LesTaches">
+        <div class="todolist not-done">
+          <div>
+            <h1>{{tache.nomList}} <button id="supprimer" ng-click="deleteList(tache._id, $index)"
+                class="btn btn-danger btn-sm"><i class="fa fa-minus-circle"></i></button></h1>
+          </div>
+          <hr>
+          <ul id="sortable" class="list-unstyled">
+            <li class="ui-state-default" ng-repeat="task in ListeTask.valeur[$index]">
+              <div>
+                <label ng-click="isSelect(task._id, task.done, $parent.$index, tache._id)">
+                  <input type="checkbox" class="checkbox"
+                    ng-click="isSelect(task._id, task.done, $parent.$index, tache._id)"
+                    ng-checked="task.done" />{{task.name}}</label>
+                <button id="supprimer" ng-click="deleteTodo(task._id, $parent.$index, tache._id)"
+                  class="btn btn-danger btn-sm"><i class="fa fa-minus-circle"></i></button>
+
+                <form>
+                  <input type="text" class="form-control add-todo" placeholder="Modifier" ng-model="updateData.text">
+                  <button id="checkAll" class="btn btn-info" type="submit"
+                    ng-click="updateToDo(task._id,$parent.$index, tache._id)">Modifier</button>
+                </form>
+              </div>
+            </li>
+          </ul>
+          <button id="supprimer" ng-click="deleteAll($index)" class="btn btn-danger btn-sm">Supprimer taches
+            finies</button>
+          <form>
+            <input type="text" class="form-control add-todo" placeholder="Add todo" ng-model="name.text">
+            <button id="checkAll" type="submit" ng-click="createTodo(tache._id, $index)"
+              class="btn btn-success">Ajouter</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app="Connexion">
+    <head>
+        <meta  charset="utf-8">
+        <title>DemoAPI</title>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-cookies.js"></script>
+        <script src="js/main.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style2.css" media="all" />
+    </head>
+    <body ng-controller="ConnexionController" >
+        <form>
+            <div class="container register-form">
+                <div class="form">
+                    <div class="note">
+                        <p>Inscription</p>
+                    </div>
+
+                    <div class="form-content">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Pseudo" value="" ng-model="user.text"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Mot de Passe" value="" ng-model="password.text"/>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btnSubmit" ng-click="inscription()">Inscription</button>
+                    </div>
+                </div>
+            </div>
+        
+        </form>
+    </body>
+</html>
